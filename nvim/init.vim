@@ -126,6 +126,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 0
 let g:python3_host_prog = '/home/ashtarev/.envs/nvim/bin/python'
 
+autocmd CompleteDone * pclose
 
 "
 "ALE

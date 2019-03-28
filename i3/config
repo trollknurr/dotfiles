@@ -18,7 +18,7 @@ floating_modifier $mod
 exec_always i3_setup_screens.sh
 exec_always --no-startup-id $HOME/dotfiles/polybar/launch.sh &
 exec_always --no-startup-id $HOME/dotfiles/compton/launch.sh &
-exec_always "feh --bg-scale ~/Pictures/mxld4d2grs421.png --bg-scale ~/Pictures/61x282uj4bk21.jpg"
+exec_always "feh --bg-center ~/Pictures/wallhaven-654971.png --bg-center ~/Pictures/wallhaven-654971.png"
 
 #
 # Workspace setup
@@ -92,7 +92,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+C exec --no-startup-id raiseorlaunch -i -c "google-chrome.*" -e google-chrome-unstable -w $ws1
         
 bindsym $mod+M exec --no-startup-id raiseorlaunch -i -c "google-chrome.*" \
-	 -e "google-chrome-unstable https://play.google.com/music/listen" -w $ws8
+	 -e "google-chrome-unstable --new-window https://play.google.com/music/listen" -w $ws8
 
 # music
 bindsym $mod+F3 exec "pulseaudio-ctl down"
@@ -100,9 +100,7 @@ bindsym $mod+F4 exec "pulseaudio-ctl up"
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
 bindsym $mod+d exec --no-startup-id run_rofi.sh
-
 bindsym $mod+Pause exec "i3lock -c 000000"
 
 # alternatively, you can use the cursor keys:

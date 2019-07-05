@@ -1,7 +1,7 @@
 export EDITOR=nvim
 export PAGER=less
 
-PATH=$PATH:~/go/bin:~/.local/bin
+PATH=$PATH:~/go/bin:~/.local/bin:~/Projects/flow9/bin
 
 export PATH="$HOME/.cargo/bin:$PATH"
 

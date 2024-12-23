@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, rootPath, ... }:
 {
   system.stateVersion = 5;
   system.configurationRevision = null;
@@ -9,14 +9,11 @@
   
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users."a.shtarev" = { pkgs, ... }: {
+  home-manager.users."a.shtarev" = { pkgs, rootPath, ... }:
+  {
     home.stateVersion = "24.05";
-    let 
-      project_root = builtins.getEnv "PWD";
-    in 
-      home.file."wezterm.lua" = {
-        source = project_root / "dotfiles/wezterm.lua";
-      };
+
+    xdg.configFile."wezterm/wezterm.lua".source = rootPath + /dotfiles/wezterm.lua;
 
     programs.home-manager.enable = true;
     programs.wezterm = {

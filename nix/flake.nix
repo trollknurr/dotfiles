@@ -12,16 +12,24 @@
 
   outputs = { self, nixpkgs, home-manager, nix-darwin }: {
 
-  darwinConfigurations."ADMEs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-  # you can have multiple darwinConfigurations per flake, one per hostname
-
-    system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
-    modules = [
-      home-manager.darwinModules.home-manager
-      ./darwin-common.nix
-      ./hosts/adme/default.nix 
-    ]; # will be important later
-  };
+    darwinConfigurations."ADMEs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
+      modules = [
+        home-manager.darwinModules.home-manager
+        ./darwin-common.nix
+        ./hosts/adme/default.nix 
+      ]; # will be important later
+    };
+    
+    darwinConfigurations."a-shtarev-mmac" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
+      modules = [
+        home-manager.darwinModules.home-manager
+        { home-manager.extraSpecialArgs = { rootPath = ./.; }; }
+        ./darwin-common.nix
+        ./hosts/mmac/default.nix 
+      ]; # will be important later
+    };
   };
 
 }

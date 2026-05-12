@@ -1,12 +1,8 @@
-export EDITOR=nvim
+export EDITOR=vim
 export PAGER=less
 
 source ~/.bash_git
 
-export HISTSIZE=10000
-export HISTFILESIZE=100000
-
-export PROMPT_COMMAND="history -a; history -n"
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n\$ '
 
 shopt -s autocd 
@@ -22,3 +18,14 @@ alias gc='git commit'
 alias gup='git pull --rebase'
 alias ggpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias glg='git log --oneline -n 20'
+export PATH="/Users/tonysh/bin:$PATH";
+
+. "$HOME/.local/bin/env"
+eval "$(/opt/homebrew/bin/direnv hook bash)"
+
+export KUBECONFIG="$HOME/.kube/xh-config"
+. "$HOME/.cargo/env"
+source -- ~/.local/share/blesh/ble.sh
+eval "$(atuin init bash)"
+
+export K9S_CONFIG_DIR="$HOME/.config/k9s"

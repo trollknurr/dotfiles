@@ -1,0 +1,19 @@
+---
+- name: Install dotfiles
+  hosts: localhost
+  connection: local
+  vars:
+    dotfiles_dir: "{{ playbook_dir | dirname }}"
+
+  tasks:
+    - name: Ensure ~/.config exists
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config"
+        state: directory
+        mode: "0755"
+
+    - name: Link emacs config
+      ansible.builtin.file:
+        src: "{{ dotfiles_dir }}/emacs"
+        dest: "{{ ansible_env.HOME }}/.config/emacs"
+        state: link

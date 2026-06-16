@@ -28,21 +28,6 @@ config.color_scheme = 'Adventure Time (Gogh)'
 --config.colors.copy_mode_inactive_highlight_bg = { Color = '#52ad70' }
 --config.colors.copy_mode_inactive_highlight_fg = { AnsiColor = 'White' }
 
-config.mouse_bindings = {
-  -- Обычное выделение левой кнопкой
-  {
-    event = { Drag = { streak = 1, button = 'Left' } },
-    mods = 'NONE',
-    action = wezterm.action.SelectTextAtMouseCursor 'Cell',
-  },
-  -- Отключить drag окна при случайном захвате края
-  {
-    event = { Drag = { streak = 1, button = 'Left' } },
-    mods = 'SUPER',
-    action = wezterm.action.StartWindowDrag,
-  },
-}
-
 config.keys = {
     {
       key = 'P',

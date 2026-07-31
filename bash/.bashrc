@@ -15,17 +15,29 @@ alias gco='git checkout'
 alias ga='git add'
 alias gcb='git checkout -b'
 alias gc='git commit'
-alias gup='git pull --rebase'
+alias gup='git pull --rebase origin $(git rev-parse --abbrev-ref HEAD)'
 alias ggpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias glg='git log --oneline -n 20'
-export PATH="/Users/tonysh/bin:$PATH";
 
 . "$HOME/.local/bin/env"
 eval "$(/opt/homebrew/bin/direnv hook bash)"
 
-export KUBECONFIG="$HOME/.kube/xh-config"
 . "$HOME/.cargo/env"
 source -- ~/.local/share/blesh/ble.sh
 eval "$(atuin init bash)"
 
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
+eval "$(atuin init bash)"
+
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
+
+# Created by `pipx` on 2026-07-01 15:21:00
+export PATH="$PATH:/Users/anton.shtarev/.local/bin"
+
+export UV_INDEX_ZALANDO_USERNAME=ashtarev
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+
+opencode() {
+  export ZLLM_API_KEY="$(ztoken)"
+  command opencode "$@"
+}

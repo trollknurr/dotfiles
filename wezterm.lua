@@ -19,6 +19,12 @@ config.window_frame = {
   font = wezterm.font({ family = 'Berkeley Mono', weight = 'Bold' }),
   font_size = 11,
 }
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
 
 
 config.font_size = 14.5
@@ -43,7 +49,7 @@ config.keys = {
       },
     },
     {
-      key = '%',
+      key = "'",
       mods = 'SUPER',
       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
@@ -83,6 +89,11 @@ config.keys = {
       key = 'DownArrow',
       mods = 'SUPER',
       action = wezterm.action.ActivatePaneDirection 'Down',
+    },
+    {
+      key = 'z',
+      mods = 'SUPER',
+      action = wezterm.action.TogglePaneZoomState,
     },
   }
 

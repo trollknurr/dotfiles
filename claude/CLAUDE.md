@@ -2,7 +2,10 @@
 
 You have MCP tools for python, use them first before grepping the code.
 Do not add anything to `__init__.py` files.
-Important: try to fix things at the cause, not the symptom.
+
+Important: 
+* try to fix things at the cause, not the symptom.
+* Never remove or skip validation because "it will fail later anyway." Errors must be caught as early and as specifically as possible, at the point where the invalid state is first known. Deferring detection obscures the root cause and makes failures harder to diagnose.
 
 # Dependecy management
 

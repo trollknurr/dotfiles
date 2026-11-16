@@ -20,3 +20,6 @@ if [ -f '/Users/anton.shtarev/Projects/mY/google-cloud-sdk/path.bash.inc' ]; the
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/anton.shtarev/Projects/mY/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/anton.shtarev/Projects/mY/google-cloud-sdk/completion.bash.inc'; fi
+
+# The next line updates PATH for Nebius CLI.
+if [ -f '/Users/anton.shtarev/.nebius/path.bash.inc' ]; then source '/Users/anton.shtarev/.nebius/path.bash.inc'; fi

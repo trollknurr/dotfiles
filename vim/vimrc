@@ -1,0 +1,136 @@
+" ============================================================
+" Plugin Manager (vim-plug)
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" ============================================================
+call plug#begin('~/.vim/plugged')
+
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+" ============================================================
+" Options
+" ============================================================
+set number
+set relativenumber
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nowrap
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set nohlsearch
+set incsearch
+set scrolloff=8
+set signcolumn=yes
+set updatetime=50
+" set colorcolumn=100
+set encoding=utf-8
+set fileencoding=utf-8
+set mouse=
+
+if has('termguicolors')
+    set termguicolors
+endif
+
+" ============================================================
+" Theme
+" ============================================================
+" colorscheme catppuccin_mocha
+
+" ============================================================
+" Statusline (lightline)
+" ============================================================
+set laststatus=2
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'catppuccin_mocha',
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '|', 'right': '|' },
+    \ }
+
+" ============================================================
+" Keymaps
+" ============================================================
+let mapleader = " "
+
+" File explorer
+nnoremap <leader>pv :Ex<CR>
+
+" Move selected lines
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Keep cursor position on J
+nnoremap J mzJ`z
+
+" Half page jumping with centering
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Search centering
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Paste without overwriting register
+xnoremap <leader>p "_dP
+
+" System clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+" Delete to void register
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Quit insert mode with C-c
+inoremap <C-c> <Esc>
+
+" Disable Q
+nnoremap Q <nop>
+
+" tmux sessionizer
+nnoremap <C-f> :silent !tmux neww tmux-sessionizer<CR>
+
+" Quickfix navigation
+nnoremap <C-k> :cnext<CR>zz
+nnoremap <C-j> :cprev<CR>zz
+nnoremap <leader>k :lnext<CR>zz
+nnoremap <leader>j :lprev<CR>zz
+
+" Search and replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Make file executable
+nnoremap <leader>x :silent !chmod +x %<CR>
+
+" FZF (replaces telescope)
+nnoremap <leader>pf :Files<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>ps :Rg<Space>
+nnoremap <leader>vh :Helptags<CR>
+
+" Fugitive
+nnoremap <leader>gs :Git<CR>
+
+" ============================================================
+" Autocmds
+" ============================================================
+augroup highlight_yank
+    autocmd!
+    if exists('##TextYankPost')
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+    endif
+augroup END
